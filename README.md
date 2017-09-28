@@ -10,6 +10,15 @@
 
 Query Builder provides a convenient, fluent interface for creating and running salesforce SOQL queries.
 
+Usage must follow this sequence:
+
+1. new Query(SObjectType fromObject, String[] fields)
+2. .apply(filter)
+3. .apply(orderBy)
+4. .apply(pagination)
+5. .apply(nullsOrder)
+6. .query() or dataQuery or countQuery
+
 ---
 
 ### Examples
