@@ -19,7 +19,7 @@ String[] fields = new String[]{
         , '' + Contact.LastName
         , '' + Contact.Birthdate
 };
-Query.Condition condition = new Query.Condition('' + Contact.CreatedDate, 'LAST_YEAR');
+Query.Condition condition = new Query.Condition('' + Contact.LastViewedDate, 'LAST_YEAR');
 Query.Filter filter = new Query.Filter(condition);
 
 String soql = new Query(Contact.SObjectType, fields)
@@ -32,8 +32,7 @@ system.debug(LoggingLevel.INFO, 'Result SOQL: ' + soql);
 ```
 Result SOQL:
 ```sql
-SELECT Id, Name, FirstName, LastName, Birthdate FROM Contact WHERE CreatedDate = 'LAST_YEAR' ORDER BY CreatedDate DESC NULLS FIRST
-
+SELECT Id, Name, FirstName, LastName, Birthdate FROM Contact WHERE LastViewedDate = LAST_YEAR ORDER BY CreatedDate DESC NULLS FIRST
 ```
 ---
 With multiple conditions and pagination:
