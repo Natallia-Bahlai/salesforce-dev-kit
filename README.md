@@ -7,8 +7,12 @@
 </a>
 
 ## Query Builder
+
+Query Builder provides a convenient, fluent interface for creating and running salesforce SOQL queries.
+
 ---
 
+### Examples
 
 With single condition
 ```apex
@@ -28,6 +32,7 @@ String soql = new Query(Contact.SObjectType, fields)
         .apply(Query.NullsOrder.NULLS_FIRST)
         .dataQuery;
 
+List<SObject> results = Database.query(soql);
 system.debug(LoggingLevel.INFO, 'Result SOQL: ' + soql);
 ```
 Result SOQL:
